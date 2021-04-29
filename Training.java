@@ -19,7 +19,7 @@ import org.apache.spark.ml.linalg.VectorUDT;
 import org.apache.spark.ml.linalg.Vectors;
 
 
-public class SparkTest {
+public class Training {
     public static void main(String[] args) {
         SparkSession spark = SparkSession
                 .builder()
