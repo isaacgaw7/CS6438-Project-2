@@ -97,33 +97,6 @@ public class SparkTest {
 
         PipelineModel model = pipeline.fit(data);
 
-        PipelineModel model = pipeline.fit(data);
-
-        Dataset<Row> predictions = model.transform(PredData);
-
-        predictions.select("prediction", "fixed acidity", "volatile acidity")
-                .show(10);
-
-        RegressionEvaluator evaluator = new RegressionEvaluator()
-                .setLabelCol("alcohol")
-                .setLabelCol("volatile acidity")
-                .setLabelCol("citric acid")
-                .setLabelCol("residual sugar")
-                .setLabelCol("chlorides")
-                .setLabelCol("free sulfur dioxide")
-                .setLabelCol("total sulfur dioxide")
-                .setLabelCol("density")
-                .setLabelCol("pH")
-                .setLabelCol("sulphates")
-                .setLabelCol("alcohol")
-                .setPredictionCol("prediction")
-                .setMetricName("rmse");
-        double rmse = evaluator.evaluate(predictions);
-        System.out.println("Root Mean Squared Error (RMSE) on test data = " + rmse);
-
-        RandomForestRegressionModel rfModel = (RandomForestRegressionModel)(model.stages()[1]);
-        System.out.println("Learned regression forest model:\n" + rfModel.toDebugString());
-
         spark.stop();
     }
 }
